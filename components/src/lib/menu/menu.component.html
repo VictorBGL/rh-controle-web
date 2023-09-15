@@ -19,17 +19,3 @@
     </div>
   </div>
 </div>
-
-<div class="content-hamburguer">
-  <i class="fas fa-bars menu-hamburguer" (click)="menuHamburguerAberto = !menuHamburguerAberto"></i>
-  <div class="lista-hamburguer fadeIn" *ngIf="menuHamburguerAberto">
-    <div class="lista-hamburguer-item" [routerLink]="['funcionarios']"  (click)="menuHamburguerAberto = false">
-      <p>Funcionarios</p>
-    </div>
-
-    <div class="lista-hamburguer-item d-flex align-items-center" (click)="logout()">
-      <i class="cor-secundaria-escura fal fa-sign-out-alt me-2"></i>
-      <p>Sair</p>
-    </div>
-  </div>
-</div>
