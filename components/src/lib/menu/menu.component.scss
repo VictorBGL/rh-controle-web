@@ -1,0 +1,118 @@
+@import 'apps/rh-controle-web/src/assets/scss/variables';
+
+
+// hamburguer
+.content-hamburguer {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+.menu-hamburguer {
+  color: $cor-secundaria;
+  font-size: $size-30;
+}
+
+.lista-hamburguer {
+  background-color: $cor-branco;
+  position: absolute;
+  right: 0;
+  width: 20rem;
+  border-radius: $radius;
+  box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
+
+  &-item {
+    padding: 1rem;
+    opacity: .75;
+    font-weight: 500;
+  }
+}
+
+
+@media (max-width: $break-phablet) {
+  .content-hamburguer {
+    display: block;
+  }
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // align-items: center;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid #eff4f9;
+
+  .img{
+    width: 8.5rem;
+    height: 8.5rem;
+    border-radius: 50%;
+    padding: 5px;
+    border: solid 1px $cor-texto;
+    margin: 0 auto;
+  }
+
+  .menu-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .menu-logout{
+      padding: .9rem;
+      // width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $size-17;
+      cursor: pointer;
+      position: relative;
+    }
+  }
+
+  .user-icon {
+    text-align: center;
+    border: solid 1px $cor-texto;
+    height: 1.55rem;
+    width: 1.55rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $size-13;
+  }
+}
+
+.menu-item {
+  padding: .9rem;
+  // width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $size-17;
+  cursor: pointer;
+  position: relative;
+
+  &.ativo {
+    background-color: #eff4f9;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 3px;
+      background-color: $cor-principal;
+    }
+  }
+}
+
+@media (max-width: $break-phablet) {
+  .menu {
+    display: none;
+  }
+}

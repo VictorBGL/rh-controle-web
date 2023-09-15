@@ -1,0 +1,30 @@
+@import 'reset';
+@import 'variables';
+
+@import 'vendor/bootstrap-grid';
+// @import "~@angular/cdk/overlay-prebuilt.css";
+
+
+// Aplicando fonte Mulish Regular para tags de TEXTO
+p, span, label, button, small,input, button, textarea, select, h1, h2, h3, h4, h5,h6, .cdk-table {
+  color: $cor-texto;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 400;
+}
+
+@media (min-width: ($break-desktop-full-hd + 1)) {
+  html, body {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: $break-desktop-hd) {
+  html, body {
+    font-size: 14px;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
