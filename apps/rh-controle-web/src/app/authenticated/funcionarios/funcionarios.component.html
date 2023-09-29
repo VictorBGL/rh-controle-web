@@ -1,1 +1,69 @@
-<div><span>hello word</span></div>
+<div class="search-container">
+    <div class="search-content mb-4">
+      <!-- <rh-web-input-group
+        label="Pesquisar empresa"
+        placeholder="Pesquisar por razão social ou CNPJ..."
+      ></rh-web-input-group> -->
+      <input type="text">
+    </div>
+    <button
+      className="custom-button-primary md-button"
+      type="button"
+    >
+      <i class="fa-light fa-plus" style="color: white"></i>
+      Nova Empresa
+    </button>
+  </div>
+  <div id="tableContent" class="listagem">
+    <!-- <cdk-table [dataSource]="dataSource" matSortDirection="asc" matSortDisableClear matSort (matSortChange)="sortData($event)">
+      <ng-container cdkColumnDef="razaoSocial">
+        <cdk-header-cell *cdkHeaderCellDef mat-sort-header> RAZÃO SOCIAL </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element"> {{ element.razaoSocial }} </cdk-cell>
+      </ng-container>
+  
+      <ng-container cdkColumnDef="cnpj">
+        <cdk-header-cell *cdkHeaderCellDef mat-sort-header> CNPJ </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element"> {{ element.cnpj }} </cdk-cell>
+      </ng-container>
+  
+      <ng-container cdkColumnDef="ie">
+        <cdk-header-cell *cdkHeaderCellDef mat-sort-header> INSCRIÇÃO ESTADUAL </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element"> {{ element.inscricaoEstadual }} </cdk-cell>
+      </ng-container>
+      <ng-container cdkColumnDef="cidade">
+        <cdk-header-cell *cdkHeaderCellDef mat-sort-header> CIDADE </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element"> {{ element.cidade }} </cdk-cell>
+      </ng-container>
+        <ng-container cdkColumnDef="estado">
+          <cdk-header-cell *cdkHeaderCellDef mat-sort-header> UF </cdk-header-cell>
+          <cdk-cell *cdkCellDef="let element"> {{ element.uf }} </cdk-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="status">
+          <cdk-header-cell *cdkHeaderCellDef mat-sort-header> STATUS </cdk-header-cell>
+          <cdk-cell *cdkCellDef="let element">
+            <div
+              [tooltip]="element.statusEmpresa"
+              class="status"
+              [ngClass]="element.statusEmpresa === 'Ativo' ? 'ativo-status' : 'gray-status'"
+            >
+            </div>
+          </cdk-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="acoes">
+          <cdk-header-cell *cdkHeaderCellDef> AÇÕES </cdk-header-cell>
+          <cdk-cell *cdkCellDef="let element">
+            <div (click)="abrirCadEditPerfil(element)" tooltip="Editar">
+              <i class="fa-light fa-pen-to-square fa-lg cursor-pointer"></i>
+            </div>
+  
+            <div (click)="removerEmpresa(element.id)" tooltip="Excluir">
+              <i class="fa-light fa-trash-can fa-lg cursor-pointer"></i>
+            </div>
+          </cdk-cell>
+        </ng-container>
+  
+      <cdk-header-row *cdkHeaderRowDef="displayedColumns"></cdk-header-row>
+      <cdk-row *cdkRowDef="let row; columns: displayedColumns"></cdk-row>
+    </cdk-table> -->
+  </div>
+  

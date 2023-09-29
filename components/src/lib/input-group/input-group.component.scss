@@ -1,0 +1,103 @@
+@import 'apps/rh-controle-web/src/assets/scss/variables';
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $color-secondary-light3;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  color: $color-secondary-light3;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: $color-secondary-light3;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: $color-secondary-light3;
+}
+
+
+.form-group {
+  label {
+    font-weight: 400;
+    font-size: $size-14;
+      line-height: $size-20;
+  }
+
+  label.required::before {
+    content: '* ';
+    color: $color-red;
+  }
+
+    input {
+      height: 2.5rem;
+      width: 100%;
+      border: solid $size-1 $color-secondary-light3;
+      border-radius: $size-6;
+      background-color: $color-white;
+      padding: $size-10;
+      padding-right: 2.5rem;
+      color: $color-primary-dark;
+      font-size: $size-13;
+    font-weight: 400;
+      line-height: $size-20;
+      transition: all 0.3s;
+
+    &:focus {
+      border-color: $color-primary;
+        box-shadow: inset 0px 0px 0px 1px $color-primary;
+        outline: none;
+    }
+  }
+
+  input[disabled],
+  input[ng-reflect-is-disabled="true"],
+  input[readonly] {
+    background-color: $bg-input-disabled;
+  }
+
+  .fal {
+    color: $color-primary;
+  }
+}
+
+// label {
+//   font-size: .6875em;
+// }
+
+// input {
+//   font-size: .875em;
+// }
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+i {
+  cursor: pointer;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.icone-senha,
+.icone-user {
+  position: absolute;
+  right: .625em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/*
+Estilização para mensagem de erro
+  color: $color-red;
+  font-size: $size-12;
+  line-height: $size-20;
+*/
