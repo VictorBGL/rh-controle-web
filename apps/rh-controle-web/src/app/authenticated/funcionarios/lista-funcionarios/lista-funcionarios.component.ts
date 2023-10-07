@@ -16,6 +16,5 @@ export class ListaFuncionariosComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
     }
 }
