@@ -30,20 +30,6 @@ export class MenuComponent {
     if (this.router.url.indexOf('funcionarios') >= 0 && menu === 'funcionarios')
       return true;
 
-    if (this.router.url.indexOf('entregador') >= 0 && menu === 'entregador')
-      return true;
-
-    if (this.router.url.indexOf('escala') >= 0 && menu === 'escala')
-      return true;
-
-    if (this.router.url.indexOf('financeiro') >= 0 && menu === 'financeiro')
-      return true;
-
-    if (this.router.url.indexOf('visao-entregador') >= 0 && menu === 'visao-entregador')
-      return true;
-
     return false;
   }
-
-
 }

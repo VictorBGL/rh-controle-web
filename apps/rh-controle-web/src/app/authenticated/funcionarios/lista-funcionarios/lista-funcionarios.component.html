@@ -1,0 +1,47 @@
+<div class="card">
+  <p class="titulo">
+    Funcionários
+  </p>
+
+  <div class="filtro-btn-content">
+    <div class="filtro">
+      <rh-web-input-group placeholder="Pesquise o funcionário" label="Nome"></rh-web-input-group>
+    </div>
+    <div>
+      <button class="me-3">Novo Funcionário</button>
+      <button>Gerar Planilha</button>
+    </div>
+  </div>
+
+  <div class="content-table" #tableContent>
+    <cdk-table [dataSource]="dataSource">
+      
+      <ng-container cdkColumnDef="nome">
+        <cdk-header-cell *cdkHeaderCellDef> Nome </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element" data-label="Nome"> {{element.nome}} </cdk-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="email">
+        <cdk-header-cell *cdkHeaderCellDef> Email </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element" data-label="Email"> {{element.email}} </cdk-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="status">
+        <cdk-header-cell *cdkHeaderCellDef> Status </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element" data-label="Status"> {{element.status}} </cdk-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="acoes">
+        <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element" data-label="Ações"> 
+          <i class="fal fa-pen-to-square cursor-pointer"></i>
+          <i class="fal fa-trash-can cursor-pointer ms-3"></i>
+        </cdk-cell>
+      </ng-container>
+
+      <cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></cdk-header-row>
+      <cdk-row *cdkRowDef="let row; columns: displayedColumns;"></cdk-row>
+    </cdk-table>
+  </div>
+</div>
+  

@@ -1,0 +1,167 @@
+@import '../variables';
+
+table {
+  border-collapse: collapse;
+  text-indent: initial;
+  border-spacing: 0;
+}
+
+cdk-row,
+cdk-header-row,
+cdk-footer-row {
+  display: flex;
+  align-items: center;
+  border-left: $size-1 solid $cor-input;
+  border-right: $size-1 solid $cor-input;
+}
+
+cdk-cell,
+cdk-header-cell,
+cdk-footer-cell {
+  flex: 1;
+}
+
+.cdk-table {
+  width: 100%;
+  font: initial;
+
+  .cdk-header-cell {
+    padding: $size-10;
+    text-align: left;
+    font-size: $size-13;
+    background-color: $cor-cinza-bg;
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 2.375rem;
+  }
+
+  .cdk-header-cell.numerico {
+    text-align: center;
+
+    .mat-sort-header-content {
+      margin: 0 auto;
+    }
+  }
+
+  .cdk-row {
+    background-color: $cor-branco;
+    border-bottom: solid $size-2 $cor-cinza-bg;
+  }
+
+  .cdk-cell {
+    padding: $size-10;
+    text-align: left;
+    font-size: $size-14;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1.8;
+    color: $cor-texto;
+  }
+
+  .cdk-cell.cor-principal {
+    color: $cor-principal;
+  }
+
+  .cdk-cell:first-child,
+  .cdk-header-cell:first-child {
+    padding-left: 1.25rem;
+  }
+
+  .cdk-cell:last-child,
+  .cdk-header-cell:last-child {
+    padding-right: 1.25rem;
+  }
+
+  .cdk-cell.numerico {
+    text-align: center;
+  }
+
+  .cdk-header-row {
+    z-index: 1 !important;
+    th {
+      background-color: $cor-cinza-bg;
+    }
+  }
+}
+
+.cdk-column-acoes,
+.cdk-column-Acoes {
+  flex: 0 0 7.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  .fal {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+
+    &.fa-trash-can {
+      color: $cor-vermelho;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.example-detail-row .cdk-column-expandedDetail {
+  padding: 0;
+}
+
+.example-detail-row .cdk-column-expandedDetail.detail {
+  padding: $size-10 3.75rem;
+}
+
+@media screen and (max-width: $break-phablet) {
+  .cdk-table {
+    border: 0;
+    vertical-align: middle;
+
+    cdk-header-row {
+      display: none;
+    }
+
+    .cdk-cell:first-child,
+    .cdk-header-cell:first-child {
+      padding-left: 0.625rem;
+    }
+
+    .cdk-cell:last-child,
+    .cdk-header-cell:last-child {
+      padding-right: 0.625rem;
+    }
+  }
+
+  .cdk-table .cdk-row {
+    border: 1px solid $cor-cinza;
+    border-radius: $radius;
+    display: block;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .cdk-table .cdk-cell {
+    border-bottom: $size-1 solid $cor-cinza-claro;
+    display: block;
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .cdk-table .cdk-cell:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 0.85rem;
+  }
+
+  .cdk-table .cdk-cell:last-child {
+    border-bottom: 0;
+  }
+}
