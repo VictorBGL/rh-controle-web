@@ -4,11 +4,10 @@ import { AuthenticatedComponent } from './authenticated.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthenticatedRouting } from './authenticated.routing';
-import { InputGroupModule, MenuModule } from '@pim-final/components';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MenuModule } from '@pim-final/components';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, AuthenticatedRouting, MenuModule, InputGroupModule, ReactiveFormsModule],
+    imports: [CommonModule, RouterModule, AuthenticatedRouting, MenuModule],
     exports: [],
     declarations: [AuthenticatedComponent],
     providers: [],

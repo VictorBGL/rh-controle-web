@@ -1,1 +1,2 @@
-export * from './lib/services.module';
+export * from './lib/http/index';
+export * from './lib/interceptor/index';

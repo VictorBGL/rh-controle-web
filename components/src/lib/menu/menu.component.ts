@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-// import { AuthService } from '@pede-entrega-web/services';
+import { UsuarioService } from '@pim-final/services';
 
 @Component({
   selector: 'rh-controle-web-menu',
@@ -18,32 +18,19 @@ export class MenuComponent {
 
   constructor(
     private router: Router,
+    private usuarioService: UsuarioService
   ) { }
 
 
 
   logout() {
-    // this.authService.logout();
+    this.usuarioService.logout();
   }
 
   ativo(menu: string): boolean {
     if (this.router.url.indexOf('funcionarios') >= 0 && menu === 'funcionarios')
       return true;
 
-    if (this.router.url.indexOf('entregador') >= 0 && menu === 'entregador')
-      return true;
-
-    if (this.router.url.indexOf('escala') >= 0 && menu === 'escala')
-      return true;
-
-    if (this.router.url.indexOf('financeiro') >= 0 && menu === 'financeiro')
-      return true;
-
-    if (this.router.url.indexOf('visao-entregador') >= 0 && menu === 'visao-entregador')
-      return true;
-
     return false;
   }
-
-
 }

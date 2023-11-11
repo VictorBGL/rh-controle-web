@@ -1,0 +1,18 @@
+<div class="content-modal">
+    <div class="header-modal">
+        <span class="titulo">{{data.titulo}}</span>
+        <i class="font-24 fal fa-times-circle" (click)="fechar()"></i>
+    </div>
+    <div class="body-modal">
+        <p class="my-3" [innerHTML]="data.conteudo"></p>
+
+        <div class="d-flex justify-content-end mt-5">
+            <rh-controle-web-button [iconeEsquerda]="true" icone="fad fa-times-circle" texto="Cancelar"
+                [btnOutline]="true" class="me-3" (click)="fechar()"
+                *ngIf="data.mostrarCancelar"></rh-controle-web-button>
+
+            <rh-controle-web-button [iconeEsquerda]="true" icone="fad fa-check-circle"
+                texto="{{data.textoBotaoOk}}" (click)="salvar()"></rh-controle-web-button>
+        </div>
+    </div>
+</div>

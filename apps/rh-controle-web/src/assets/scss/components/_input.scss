@@ -1,0 +1,14 @@
+
+@import "./../variables";
+
+.invalid {
+  .form-group {
+      input, textarea {
+          border-color: $cor-vermelho !important;
+      }
+  }
+
+  .ng-select-container {
+      border-color: $cor-vermelho !important;
+  }
+}

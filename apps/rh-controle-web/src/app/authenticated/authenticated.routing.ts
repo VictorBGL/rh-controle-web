@@ -2,7 +2,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthenticatedComponent } from "./authenticated.component";
-import { FuncionariosComponent } from "./funcionarios/funcionarios.component";
 
 
 const routes: Routes = [
@@ -12,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'funcionarios',
-        component: FuncionariosComponent
+        loadChildren: () => import('./funcionarios/funcionarios.module').then(x => x.FuncionarioModule),
       },
     ]
   }

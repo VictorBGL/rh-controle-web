@@ -1,0 +1,14 @@
+@import './../variables';
+
+.menu-overlay-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: $cor-branco;
+  border: 1px $cor-cinza-claro solid;
+  border-radius: 0.3rem;
+}
+
+
+.menu-overlay-backdrop {
+  background-color: transparent;
+}
