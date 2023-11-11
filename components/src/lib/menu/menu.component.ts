@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-// import { AuthService } from '@pede-entrega-web/services';
+import { UsuarioService } from '@pim-final/services';
 
 @Component({
   selector: 'rh-controle-web-menu',
@@ -18,12 +18,13 @@ export class MenuComponent {
 
   constructor(
     private router: Router,
+    private usuarioService: UsuarioService
   ) { }
 
 
 
   logout() {
-    // this.authService.logout();
+    this.usuarioService.logout();
   }
 
   ativo(menu: string): boolean {

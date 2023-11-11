@@ -1,0 +1,25 @@
+
+<div class="alert-wrapper" [@slideContent]="animationState">
+  <!-- [ngClass]="{'sucesso': data.status === 'sucesso', 'erro': data.status === 'erro', 'aviso': data.status === 'aviso', 'info': data.status === 'info'}" -->
+  <div class="alert-icon sucesso" *ngIf="data.status === 'sucesso'">
+    <i class="fas fa-check-circle icon"></i>
+  </div>
+  <div class="alert-icon erro" *ngIf="data.status === 'erro'">
+    <i class="fas fa-times-circle icon"></i>
+  </div>
+  <div class="alert-icon aviso" *ngIf="data.status === 'aviso'">
+    <i class="fas fa-exclamation-circle icon"></i>
+  </div>
+  <div class="alert-icon info" *ngIf="data.status === 'info'">
+    <i class="fas fa-info-circle icon"></i>
+  </div>
+
+  <div class="alert-desc">
+    <span class="alert-title">{{data.title}}</span>
+    <p class="alert-subtitle">{{data.subtitle}}</p>
+  </div>
+
+  <div class="alert-close">
+    <i class="fal fa-times-circle icon cursor-pointer" (click)="close()"></i>
+  </div>
+</div>

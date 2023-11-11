@@ -7,12 +7,11 @@
     <div class="filtro">
       <rh-web-input-group placeholder="Pesquise o funcionário" label="Nome"></rh-web-input-group>
     </div>
-    <div>
-      <button class="me-3">Novo Funcionário</button>
-      <button>Gerar Planilha</button>
+    <div class="d-flex">
+      <rh-controle-web-button texto="Gerar Planilha" icone="fa-sharp fa-regular fa-file-spreadsheet"></rh-controle-web-button>
+      <rh-controle-web-button class="ms-3" texto="Novo Funcionário" icone="fad fa-plus-circle"></rh-controle-web-button>
     </div>
   </div>
-
   <div class="content-table" #tableContent>
     <cdk-table [dataSource]="dataSource">
       
@@ -35,7 +34,7 @@
         <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
         <cdk-cell *cdkCellDef="let element" data-label="Ações"> 
           <i class="fal fa-pen-to-square cursor-pointer"></i>
-          <i class="fal fa-trash-can cursor-pointer ms-3"></i>
+          <i (click)="excluirUsuario(element.id)" class="fal fa-trash-can cursor-pointer ms-3"></i>
         </cdk-cell>
       </ng-container>
 

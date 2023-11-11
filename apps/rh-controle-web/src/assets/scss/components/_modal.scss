@@ -1,0 +1,69 @@
+@import './../variables';
+.content-modal {
+  .header-modal {
+    padding: $size-15;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .fa-times-circle {
+        cursor: pointer;
+    }
+  }
+
+  .titulo {
+    font-size: $size-20;
+    font-weight: 550;
+  }
+
+  .subtitulo {
+    font-size: $size-17;
+    font-weight: 550;
+    margin: 1.2rem 0;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      height: 3px;
+      width: 4rem;
+      background-color: $cor-principal;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      border-radius: 6px;
+    }
+  }
+
+  .body-modal {
+    padding: $size-15;
+    overflow: auto;
+    max-height: calc(100vh - 2.953rem);
+  }
+
+  .footer-modal {
+    padding: $size-15;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+}
+
+
+.overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cdk-overlay-dark-backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.overlay-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: $cor-branco;  
+  border-radius: 0.3rem;
+  margin: .5rem;
+}
