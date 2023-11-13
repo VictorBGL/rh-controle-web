@@ -47,8 +47,12 @@
 }
 
 .content-table {
-  max-height: 69vh;
+  // max-height: 69vh;
+  // overflow: auto;
+  margin-top: 3rem;
   overflow: auto;
+  max-height: calc(100svh - 20.8rem);
+  position: relative;
 }
 @media (max-width: $break-desktop-hd) {
   .content-table {
@@ -73,4 +77,39 @@
   .card {
     padding: 1.5rem $size-10;
   }
+}
+
+@mixin cdk-column($width) {
+  @extend %cdk-column-base;
+  flex-basis: $width;
+}
+
+.cdk-column {
+
+  &-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+.status {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.ativo-status {
+  background: $cor-principal;
+}
+
+.inativo-status {
+  background: $color-red;
+}
+
+.invalid {
+  color: $color-red !important;
+  font-size: 0.75rem;
 }
