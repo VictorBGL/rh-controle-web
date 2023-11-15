@@ -1,0 +1,233 @@
+
+@import './variables';
+
+.position-relative {
+  position: relative;
+}
+
+// cria os '...' tres pontinhos quando o texto ultrapassar o tamanho da div
+.text-ellipisis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Centraliza o elemento filho da div que tiver essa classe
+.centraliza {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Centraliza texto - nao funciona com <span>
+.text-center {
+  text-align: center;
+}
+
+// Classes de font
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+// WEIGHT
+.font-400 {
+  font-weight: 400;
+}
+.font-500 {
+  font-weight: 500;
+}
+.font-600 {
+  font-weight: 600;
+}
+.font-700 {
+  font-weight: 700;
+}
+
+.cor-primaria {
+  color: $color-primary;
+}
+
+.cor-cinza {
+  color: $color-secondary-light3
+}
+// Facilitadores para aplicar a font
+.font-subtitulo {
+  font-weight: 500;
+}
+
+// font italico
+
+.font-italico {
+  font-style: italic;
+}
+.font-titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 1rem;
+
+
+  // &:before {
+  //   content: '';
+  //   position: absolute;
+  //   // left: 50%;
+  //   // transform: translateX(-50%);
+  //   bottom: -$size-5;
+  //   height: $size-4;
+  //   width: 3rem;
+  //   background-color: $color-primary;
+  //   z-index: -1;
+  // }
+}
+
+// .titulo,
+// .titulo-sublinhado {
+//   font-size: 1.5rem;
+//   font-weight: 600;
+//   position: relative;
+//   margin-bottom: 1rem;
+// }
+
+// .titulo-sublinhado {
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     left: 0;
+//     bottom: -$size-5;
+//     height: $size-4;
+//     width: 3rem;
+//     background-color: $color-secondary;
+//   }
+// }
+
+// Card
+.card {
+  // box-shadow: 0px 2px 2px rgba(187, 204, 221, 0.4);
+  box-shadow: 0px 5px 5px rgba(187, 204, 221, 0.4), 0px 10px 10px rgba(187, 204, 221, 0.4);
+  background: $color-white;
+  border-radius: $radius;
+  padding: 1.5rem;
+
+  .titulo {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    color: $color-secondary;
+  }
+}
+@media screen and (max-width: $break-phablet)  {
+  .card {
+    padding: 1.5rem $size-10;
+  }
+}
+// Cores
+.cor-primaria {
+  color: $color-primary !important;
+}
+
+.cor-secundaria {
+  color: $color-secondary !important;
+}
+.cor-vermelho {
+  color: $color-red;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+
+// texto underline
+.text-underline {
+  text-decoration: underline;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+
+.label-input {
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  margin-bottom: 0.3125rem;
+  font-weight: 700;
+}
+
+.row{
+  display: flex;
+  align-items:flex-end;
+}
+.flex-1 {
+  flex:1
+}
+.flex-2 {
+  flex:2
+}
+.flex-3 {
+  flex:3
+}
+.flex-4 {
+  flex:4
+}
+.flex-5 {
+  flex:5
+}
+.flex-6 {
+  flex:6
+}
+.flex-7 {
+  flex:7
+}
+.flex-8 {
+  flex:8
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.gap-4 {
+  gap: 4rem;
+}
+.margin-less{
+  margin: 0 !important;
+}
+
+.status {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.ativo-status {
+  background: $color-primary;
+}
+
+.gray-status {
+  background: $color-secondary-light3;
+}
+
+.invalid {
+  color: $color-red !important;
+  font-size: 0.75rem;
+}
+
+.invalid-icon{
+  color: $color-red !important;
+}

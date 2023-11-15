@@ -6,6 +6,7 @@ import { UsuarioService } from "@pim-final/services";
 import { debounceTime, distinctUntilChanged, filter, switchMap, take, takeUntil } from "rxjs";
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import { CadEditFuncionariosComponent } from "./cad-edit-funcionarios/cad-edit-funcionarios.component";
 const EXCEL_TYPE =
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 
@@ -21,6 +22,8 @@ export class ListaFuncionariosComponent extends BaseComponent implements OnInit 
     displayedColumns = ['nome', 'email', 'status', 'acoes'];
     numeroPagina = 2;
     formFiltro: UsuarioFilterFormGroup = new UsuarioFilterFormGroup();
+    statusItems = [{nome: 'Ativo', value: true}, {nome: 'Inativo', value: false}];
+
 
     @ViewChild('tableContent') tableContent!: ElementRef;
 
@@ -37,11 +40,11 @@ export class ListaFuncionariosComponent extends BaseComponent implements OnInit 
     }
 
     constructor(
-            private modalService: ModalService, 
-            private usuarioService: UsuarioService,
-            private alertService: AlertService
-        ){
-        super();
+        private modalService: ModalService, 
+        private usuarioService: UsuarioService,
+        private alertService: AlertService
+      ){
+      super();
     }
 
     ngOnInit(): void {
@@ -56,37 +59,57 @@ export class ListaFuncionariosComponent extends BaseComponent implements OnInit 
     }
 
     getFuncionarios(){
-        this.numeroPagina = 2;
-        this.usuarioService.getUsuariosFilter(this.formFiltro.value)
-        .pipe(take(1))
-        .subscribe({
-          next: (data) => {
-            this.dataSource = data.resultado;
-          },
-          error: (err) => {
-    
-          }
-        });
+      this.numeroPagina = 2;
+      this.usuarioService.getUsuariosFilter(this.formFiltro.value)
+      .pipe(take(1))
+      .subscribe({
+        next: (data) => {
+          this.dataSource = data.resultado;
+        },
+        error: (err) => {
+  
+        }
+      });
     }
 
     exportarUsuarios(){
-        this.usuarioService.exportarUsuario(this.formFiltro.value)
-        .pipe(take(1))
-        .subscribe(data => {
-            if(data.sucesso){
-            const worksheet = XLSX.utils.json_to_sheet(data.resultado);
+      this.usuarioService.exportarUsuario(this.formFiltro.value)
+      .pipe(take(1))
+      .subscribe(data => {
+          if(data.sucesso){
+          const worksheet = XLSX.utils.json_to_sheet(data.resultado);
 
-            const workbook = {
-              Sheets: { funcionarios: worksheet },
-              SheetNames: ['funcionarios'],
-            };
-            const excelBuffer = XLSX.write(workbook, {
-              bookType: 'xlsx',
-              type: 'array',
-            });
+          const workbook = {
+            Sheets: { funcionarios: worksheet },
+            SheetNames: ['funcionarios'],
+          };
+          const excelBuffer = XLSX.write(workbook, {
+            bookType: 'xlsx',
+            type: 'array',
+          });
 
-            this.saveAsExcelFile(excelBuffer, 'relatorio-funcionarios');
-            }
+          this.saveAsExcelFile(excelBuffer, 'relatorio-funcionarios');
+          }
+      });
+    }
+
+    abrirCadEdit(data: UsuarioResponseModel | null){
+      const modal = this.modalService.open(CadEditFuncionariosComponent, {
+        width: '55rem',
+        clickOutside: false,
+        data,
+      });
+  
+      modal
+        .afterClosed()
+        .pipe(
+          take(1),
+          filter((data) => data != false)
+        )
+        .subscribe((data: boolean) => {
+          if (data) {
+            this.getFuncionarios();
+          }
         });
     }
 

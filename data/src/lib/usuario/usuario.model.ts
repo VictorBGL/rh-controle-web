@@ -22,7 +22,16 @@ export interface UsuarioRelatorioResponseModel {
 }
 
 export interface UsuarioModel {
-    
+  nome: string;
+  telefone: string;
+  email: string;
+  acesso: string;
+  salarioBruto: number;
+  dependentes: number;
+  pensao: number;
+  ativo: boolean;
+  senha: string;
+  senhaConfirmacao: string;
 }
 
 export interface UsuarioFilterModel{

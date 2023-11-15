@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
-import { LoginModel, OkModel, OkModelGeneric, UsuarioFilterModel, UsuarioLoginResponseModel, UsuarioRelatorioResponseModel, UsuarioResponseModel } from "@pim-final/data";
+import { LoginModel, OkModel, OkModelGeneric, UsuarioFilterModel, UsuarioLoginResponseModel, UsuarioModel, UsuarioRelatorioResponseModel, UsuarioResponseModel } from "@pim-final/data";
 import { environment } from "../../configuration/environment";
 import { Router } from "@angular/router";
 import { HttpResponseToResponsePagination, PaginationResponseModel } from "../pagination";
@@ -36,6 +36,14 @@ export class UsuarioService {
 
   public exportarUsuario(model: Partial<UsuarioFilterModel> = {}): Observable<OkModel<UsuarioRelatorioResponseModel[]>>{
     return this.http.post<OkModel<UsuarioRelatorioResponseModel[]>>(`${this.endpointUrl}/exportar`, model);
+  }
+
+  public salvarUsuario(model: UsuarioModel): Observable<OkModelGeneric>{
+    return this.http.post<OkModelGeneric>(`${this.endpointUrl}`, model);
+  }
+
+  public editarUsuario(model: UsuarioModel, id: string): Observable<OkModelGeneric>{
+    return this.http.put<OkModelGeneric>(`${this.endpointUrl}/${id}`, model);
   }
 
   public excluirUsuario(id: string): Observable<OkModelGeneric>{
