@@ -7,12 +7,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FuncionarioComponent } from "./funcionarios.component";
 import { ListaFuncionariosComponent } from "./lista-funcionarios/lista-funcionarios.component";
 import { CdkTableModule } from '@angular/cdk/table';
-import { UsuarioService } from "@pim-final/services";
+import { CadEditFuncionariosComponent } from "./lista-funcionarios/cad-edit-funcionarios/cad-edit-funcionarios.component";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-    imports: [CommonModule, FuncionarioRouting, RouterModule, InputGroupModule, FormsModule, ReactiveFormsModule, CdkTableModule, ButtonIconModule],
+    imports: [CommonModule, FuncionarioRouting, RouterModule, InputGroupModule, FormsModule, ReactiveFormsModule, CdkTableModule, ButtonIconModule, NgSelectModule],
     exports: [],
-    declarations: [FuncionarioComponent, ListaFuncionariosComponent],
+    declarations: [FuncionarioComponent, ListaFuncionariosComponent, CadEditFuncionariosComponent],
     providers: [AlertService, ModalService],
 })
 export class FuncionarioModule { }

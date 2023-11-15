@@ -1,0 +1,166 @@
+<div class="content-modal fadeIn">
+    <div class="header-modal">
+      <h1 *ngIf="data === null"  class="title">Novo Funcionário</h1>
+      <h1 *ngIf="data !== null"  class="title">Editar Funcionário</h1>
+      <i class="fa fa-light fa-times-circle" (click)="fechar()"></i>
+    </div>
+    <div class="body-modal">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-5">
+           <rh-web-input-group
+             label="Nome"
+             placeholder="Informe o Nome"
+             formControlName="nome"
+             [ngClass]="displayFieldCss(form.nome)"
+           ></rh-web-input-group>
+           <span [ngClass]="displayFieldCss(form.nome)">{{displayFieldMessage(form.nome)}}</span>
+         </div>
+         <div class="col-3">
+             <rh-web-input-group
+             label="Telefone"
+             placeholder="Informe o Telefone"
+             formControlName="telefone"
+             mask="cel"
+             [dropSpecialCharacters]="true"
+             [ngClass]="displayFieldCss(form.telefone)"
+           ></rh-web-input-group>
+           <span [ngClass]="displayFieldCss(form.telefone)">{{displayFieldMessage(form.telefone)}}</span>
+         </div>
+         <div class="col-4">
+             <rh-web-input-group
+             label="Email"
+             placeholder="Informe o Email"
+             formControlName="email"
+             [ngClass]="displayFieldCss(form.email)"
+             [disabled]="data !== null"
+           ></rh-web-input-group>
+           <span [ngClass]="displayFieldCss(form.email)">{{displayFieldMessage(form.email)}}</span>
+         </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-3">
+            <rh-web-input-group
+              label="Salario Bruto"
+              placeholder="Informe o Salario"
+              formControlName="salarioBruto"
+              type="number"
+              [decimal]="true"
+              [options]="{
+                suffix: '',
+                prefix: 'R$',
+                thousands: '.',
+                decimal: ',',
+                align: 'rigth'
+              }"
+              [ngClass]="displayFieldCss(form.salarioBruto)"
+            ></rh-web-input-group>
+            <span [ngClass]="displayFieldCss(form.salarioBruto)">{{displayFieldMessage(form.salarioBruto)}}</span>
+          </div>
+          <div class="col-3">
+              <rh-web-input-group
+              label="Qtd. Dependentes"
+              placeholder="Informe o Quantos Dependentes"
+              formControlName="dependentes"
+              type="number"
+              [ngClass]="displayFieldCss(form.dependentes)"
+            ></rh-web-input-group>
+            <span [ngClass]="displayFieldCss(form.dependentes)">{{displayFieldMessage(form.dependentes)}}</span>
+          </div>
+          <div class="col-3">
+              <rh-web-input-group
+              label="Pensão"
+              placeholder="Informe a Pensão se Houver"
+              formControlName="pensao"
+              type="number"
+              [decimal]="true"
+              [options]="{
+                suffix: '',
+                prefix: 'R$',
+                thousands: '.',
+                decimal: ',',
+                align: 'rigth'
+              }"
+              [ngClass]="displayFieldCss(form.pensao)"
+            ></rh-web-input-group>
+            <span [ngClass]="displayFieldCss(form.pensao)">{{displayFieldMessage(form.pensao)}}</span>
+          </div>
+          <div class="col-3">
+            <label><span class="invalid-icon">* </span>Status</label>
+            <ng-select
+                placeholder="Selecione..."
+                [items]="statusItems"
+                bindLabel="nome"
+                bindValue="value"
+                formControlName="ativo"
+                [clearable]="false"
+                [ngClass]="displayFieldCss(form.ativo)"
+            ></ng-select>
+            <span [ngClass]="displayFieldCss(form.ativo)">{{displayFieldMessage(form.ativo)}}</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-4">
+            <label><span class="invalid-icon">* </span>Acesso</label>
+            <ng-select
+                placeholder="Selecione..."
+                [items]="acessoItems"
+                formControlName="acesso"
+                bindLabel="nome"
+                bindValue="value"
+                [clearable]="false"
+                [ngClass]="displayFieldCss(form.acesso)"
+            ></ng-select>
+            <span [ngClass]="displayFieldCss(form.acesso)">{{displayFieldMessage(form.acesso)}}</span>
+          </div>
+          <div class="col-4">
+            <rh-web-input-group
+              label="Senha"
+              placeholder="Informe a Senha"
+              formControlName="senha"
+              [ngClass]="displayFieldCss(form.senha)"
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              [icone]="showPassword ? 'fa-sharp fa-light fa-eye-slash' : 'fa-sharp fa-light fa-eye'"
+              (onIconClick)="showPassword = !showPassword"
+            ></rh-web-input-group>
+            <span [ngClass]="displayFieldCss(form.senha)">{{displayFieldMessage(form.senha)}}</span>
+          </div>
+          <div class="col-4">
+            <rh-web-input-group
+              label="Confirme a Senha"
+              placeholder="Digite novamente a Senha"
+              formControlName="senhaConfirmacao"
+              [ngClass]="displayFieldCss(form.senhaConfirmacao)"
+              [type]="showPasswordConfirm ? 'text' : 'password'"
+              id="password"
+              [icone]="showPasswordConfirm ? 'fa-sharp fa-light fa-eye-slash' : 'fa-sharp fa-light fa-eye'"
+              (onIconClick)="showPasswordConfirm = !showPasswordConfirm"
+            ></rh-web-input-group>
+            <span [ngClass]="displayFieldCss(form.senhaConfirmacao)">{{displayFieldMessage(form.senhaConfirmacao)}}</span>
+          </div>
+        </div>
+        
+      </form>
+      <div class="footer-modal">
+        <div class="d-flex align-items-center justify-content-between pt-3 w-100">
+          <span class="font-12 font-400 font-italico cor-texto"
+            >Os campos marcados com * são obrigatórios.</span
+          >
+          <div class="footer-btns">
+            <rh-controle-web-button
+              texto="Cancelar"
+              icone="fa-light fa-times"
+              (click)="fechar()">
+            </rh-controle-web-button>
+            <rh-controle-web-button
+              texto="Salvar"
+              icone="fa-light fa-check"
+              (click)="salvar()">
+            </rh-controle-web-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,11 @@
+.footer-modal .footer-btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.last-grid-input {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+}
