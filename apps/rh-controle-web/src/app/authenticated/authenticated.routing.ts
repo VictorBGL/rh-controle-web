@@ -13,6 +13,10 @@ const routes: Routes = [
         path: 'funcionarios',
         loadChildren: () => import('./funcionarios/funcionarios.module').then(x => x.FuncionarioModule),
       },
+      {
+        path: 'cartao-ponto',
+        loadChildren: () => import('./cartao-ponto/cartao-ponto.module').then(x => x.CartaoPontoModule),
+      },
     ]
   }
 ];

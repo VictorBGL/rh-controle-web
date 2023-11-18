@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
-import { LoginModel, OkModel, OkModelGeneric, UsuarioFilterModel, UsuarioLoginResponseModel, UsuarioModel, UsuarioRelatorioResponseModel, UsuarioResponseModel } from "@pim-final/data";
+import { LoginModel, OkModel, OkModelGeneric, UsuarioFilterModel, UsuarioLoginResponseModel, UsuarioModel, UsuarioRelatorioResponseModel, UsuarioResponseModel, UsuarioTokenModel } from "@pim-final/data";
 import { environment } from "../../configuration/environment";
 import { Router } from "@angular/router";
 import { HttpResponseToResponsePagination, PaginationResponseModel } from "../pagination";
@@ -67,6 +67,25 @@ export class UsuarioService {
     } else {
       return null;
     }
+  }
+
+  public getUsuarioToken(): UsuarioTokenModel | null {
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      return JSON.parse(token).usuarioToken as UsuarioTokenModel;
+    } else {
+      return null;
+    }
+  }
+  
+  public getId(): string {
+    const user = this.getUsuarioToken();
+
+    if (user) {
+      return user.id;
+    }
+
+    return '';
   }
 
   public logout(): void {
