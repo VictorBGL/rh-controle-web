@@ -1,0 +1,51 @@
+<div class="content-modal fadeIn">
+    <div class="header-modal">
+      <h1 class="title">Marcar Ponto</h1>
+      <i class="fa fa-light fa-times-circle" (click)="fechar()"></i>
+    </div>
+    <div class="body-modal">
+        <div class="foto">
+            <video *ngIf="base64Image === ''" #videoElement width="350" height="250" autoplay></video>
+            <img class="imgTamanho" *ngIf="base64Image !== ''" [src]="base64Image" alt="Imagem Capturada" id="capturedImage">
+            <rh-controle-web-button
+                class="mt-3"
+                [texto]="base64Image === '' ? 'Tirar Foto' : 'Mudar Foto'"
+                (click)="takePicture()"
+                icone="fa-regular fa-camera-retro">
+            </rh-controle-web-button>
+        </div>
+        <div class="row mt-4" [formGroup]="form">
+            <div class="col-6">
+                <rh-web-input-group
+                  label="Endereço Atual (Pode não buscar a localização correta)"
+                  placeholder="Informe um Endereço"
+                  formControlName="endereco"
+                ></rh-web-input-group>
+              </div>
+            <div class="col-6">
+             <rh-web-input-group
+               label="Observação"
+               placeholder="Informe uma observação"
+               formControlName="observacao"
+            ></rh-web-input-group>
+           </div>
+        </div>
+        <div class="footer-modal">
+            <div class="d-flex align-items-center justify-content-between pt-3 w-100">
+              <span class="font-12 font-400 font-italico cor-texto"></span>
+              <div class="footer-btns">
+                <rh-controle-web-button
+                  texto="Cancelar"
+                  icone="fa-light fa-times"
+                  (click)="fechar()">
+                </rh-controle-web-button>
+                <rh-controle-web-button
+                  texto="Salvar"
+                  icone="fa-light fa-check"
+                  (click)="salvar()">
+                </rh-controle-web-button>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

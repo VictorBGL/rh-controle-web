@@ -1,0 +1,50 @@
+<div class="card">
+    <p class="titulo">
+      Funcionários
+    </p>
+  
+    <div class="filtro-btn-content">
+      <div class="filtro" [formGroup]="formFiltro">
+        <rh-web-input-group formControlName="dataInicio" type="date" label="Data Início"></rh-web-input-group>
+        <rh-web-input-group formControlName="dataFim" class="ms-3" type="date" label="Data Fim"></rh-web-input-group>
+      </div>
+      <div class="d-flex">
+        <!-- <rh-controle-web-button (click)="exportarUsuarios()" texto="Gerar Planilha" icone="fa-sharp fa-regular fa-file-spreadsheet"></rh-controle-web-button> -->
+        <rh-controle-web-button (click)="abrirPonto()" class="ms-3" texto="Inserir Ponto" icone="fad fa-plus-circle"></rh-controle-web-button>
+      </div>
+    </div>
+    <div class="content-table" #tableContent id="tableContent" (scroll)="onScroll($event)">
+      <cdk-table [dataSource]="dataSource">
+        
+        <ng-container cdkColumnDef="dia">
+          <cdk-header-cell *cdkHeaderCellDef> Dia </cdk-header-cell>
+          <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="Dia"> {{element.dia }} </cdk-cell>
+        </ng-container>
+  
+        <ng-container cdkColumnDef="horarios">
+          <cdk-header-cell *cdkHeaderCellDef> Horários </cdk-header-cell>
+          <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="Horários"> {{element.horarios}} </cdk-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="total">
+            <cdk-header-cell *cdkHeaderCellDef> Total </cdk-header-cell>
+            <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="Total"> {{element.totalHoras}} </cdk-cell>
+        </ng-container>
+  
+        <ng-container cdkColumnDef="feriado">
+          <cdk-header-cell *cdkHeaderCellDef> Feriado/Fim de Semana </cdk-header-cell>
+          <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="feriado">{{element.feriado ? 'Sim' : 'Não'}}</cdk-cell>
+        </ng-container>
+  
+        <ng-container cdkColumnDef="acoes">
+          <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
+          <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="Ações"> 
+            <i class="fal fa-trash-can cursor-pointer ms-3 lixeira"></i>
+          </cdk-cell>
+        </ng-container>
+  
+        <cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></cdk-header-row>
+        <cdk-row *cdkRowDef="let row; columns: displayedColumns;"></cdk-row>
+      </cdk-table>
+    </div>
+  </div>

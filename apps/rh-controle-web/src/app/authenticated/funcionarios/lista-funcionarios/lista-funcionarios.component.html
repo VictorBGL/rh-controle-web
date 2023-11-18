@@ -23,7 +23,7 @@
       <rh-controle-web-button (click)="abrirCadEdit(null)" class="ms-3" texto="Novo Funcionário" icone="fad fa-plus-circle"></rh-controle-web-button>
     </div>
   </div>
-  <div class="content-table" #tableContent id="tableContent">
+  <div class="content-table" #tableContent id="tableContent" (scroll)="onScroll($event)">
     <cdk-table [dataSource]="dataSource">
       
       <ng-container cdkColumnDef="nome">

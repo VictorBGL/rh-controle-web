@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRouting } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { TokenInterceptor, UsuarioService } from '@pim-final/services';
+import { CartaoPontoService, TokenInterceptor, UsuarioService } from '@pim-final/services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
@@ -32,6 +32,7 @@ export function playerFactory() {
     UsuarioService,
     AlertService, 
     LoadingService,
+    CartaoPontoService,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
