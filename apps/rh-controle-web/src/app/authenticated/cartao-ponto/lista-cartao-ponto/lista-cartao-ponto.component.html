@@ -9,7 +9,7 @@
         <rh-web-input-group formControlName="dataFim" class="ms-3" type="date" label="Data Fim"></rh-web-input-group>
       </div>
       <div class="d-flex">
-        <!-- <rh-controle-web-button (click)="exportarUsuarios()" texto="Gerar Planilha" icone="fa-sharp fa-regular fa-file-spreadsheet"></rh-controle-web-button> -->
+        <rh-controle-web-button tooltip="Visualizar Fechamento do Mês Passado" (click)="realizarFechamento()" texto="Fechamento" icone="fa-sharp fa-regular fa-file-spreadsheet"></rh-controle-web-button>
         <rh-controle-web-button *ngIf="this.usuarioExternoId === undefined" (click)="abrirPonto()" class="ms-3" texto="Inserir Ponto" icone="fad fa-plus-circle"></rh-controle-web-button>
       </div>
     </div>
@@ -35,11 +35,15 @@
           <cdk-header-cell *cdkHeaderCellDef> Feriado/Fim de Semana </cdk-header-cell>
           <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="feriado">{{element.feriado ? 'Sim' : 'Não'}}</cdk-cell>
         </ng-container>
-  
         <ng-container cdkColumnDef="acoes">
           <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
           <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="Ações"> 
-            <i (click)="abrirPontoDoDia(element.dia, element.diaId)" class="fa-regular fa-bars cursor-pointer ms-3 lixeira"></i>
+            <div tooltip="Definir como Feriado">
+              <i (click)="atualizarFeriado(element.diaId, element.feriado)" class="fa-regular fa-calendar cursor-pointer ms-3 lixeira"></i>
+            </div>
+            <div tooltip="Edição de Ponto">
+              <i (click)="abrirPontoDoDia(element.dia, element.diaId)" class="fa-regular fa-bars cursor-pointer ms-3 lixeira"></i>
+            </div>
           </cdk-cell>
         </ng-container>
   

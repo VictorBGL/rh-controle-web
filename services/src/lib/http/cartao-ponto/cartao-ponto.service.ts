@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { environment } from "../../configuration/environment";
 import { HttpResponseToResponsePagination, PaginationResponseModel } from "../pagination";
 import { Observable, map } from "rxjs";
-import { DiaPontoModel, DiaPontoResponseModel, HorarioPontoModel, OkModel, OkModelGeneric, PontoFilterModel, PontoResponseModel } from "@pim-final/data";
+import { DiaPontoModel, DiaPontoResponseModel, FechamentoFolhaPagamento, HorarioPontoModel, OkModel, OkModelGeneric, PontoFilterModel, PontoResponseModel } from "@pim-final/data";
 
 @Injectable()
 export class CartaoPontoService {
@@ -36,6 +36,14 @@ export class CartaoPontoService {
 
   public salvarHorarioPonto(model: HorarioPontoModel): Observable<OkModelGeneric>{
     return this.http.post<OkModelGeneric>(`${this.endpointUrl}/horario`, model);
+  }
+
+  public atualizarFeriado(id: string): Observable<OkModelGeneric>{
+    return this.http.post<OkModelGeneric>(`${this.endpointUrl}/dia/${id}/feriado`, {});
+  }
+
+  public getfechamentoUsuario(id: string): Observable<OkModel<FechamentoFolhaPagamento>>{
+    return this.http.get<OkModel<FechamentoFolhaPagamento>>(`${this.endpointUrl}/fechamento/usuario/${id}`);
   }
 
   public editarHorariosPonto(model: DiaPontoModel): Observable<OkModelGeneric>{

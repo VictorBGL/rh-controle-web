@@ -1,8 +1,9 @@
+import { ModalFechamentoComponent } from './lista-cartao-ponto/modal-fechamento/modal-fechamento.component';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { CartaoPontoRouting } from "./cartao-ponto.routing";
 import { RouterModule } from "@angular/router";
-import { AlertService, ButtonIconModule, InputGroupModule, ModalService } from "@pim-final/components";
+import { AlertService, ButtonIconModule, InputGroupModule, ModalService, TooltipModule } from "@pim-final/components";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CdkTableModule } from "@angular/cdk/table";
 import { NgSelectModule } from "@ng-select/ng-select";
@@ -13,9 +14,9 @@ import { CartaoPontoService } from "@pim-final/services";
 import { ModalEditPontoComponent } from "./lista-cartao-ponto/modal-edit-ponto/modal-edit-ponto.component";
 
 @NgModule({
-    imports: [CommonModule, CartaoPontoRouting, RouterModule, InputGroupModule, FormsModule, ReactiveFormsModule, CdkTableModule, ButtonIconModule, NgSelectModule],
+    imports: [CommonModule, CartaoPontoRouting, RouterModule, InputGroupModule, FormsModule, ReactiveFormsModule, CdkTableModule, ButtonIconModule, NgSelectModule, TooltipModule],
     exports: [],
-    declarations: [CartaoPontoComponent, ListaCartaoPontoComponent, ModalCadPontoComponent, ModalEditPontoComponent],
+    declarations: [CartaoPontoComponent, ListaCartaoPontoComponent, ModalCadPontoComponent, ModalEditPontoComponent, ModalFechamentoComponent],
     providers: [AlertService, ModalService, CartaoPontoService],
 })
 export class CartaoPontoModule { }

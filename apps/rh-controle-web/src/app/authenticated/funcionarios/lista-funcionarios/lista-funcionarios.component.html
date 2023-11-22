@@ -49,9 +49,15 @@
       <ng-container cdkColumnDef="acoes">
         <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
         <cdk-cell *cdkCellDef="let element" data-label="Ações"> 
-          <i (click)="abrirCartaoPonto(element.id)" class="fa-regular fa-clock cursor-pointer"></i>
-          <i (click)="abrirCadEdit(element)" class="fal fa-pen-to-square cursor-pointer"></i>
-          <i (click)="excluirUsuario(element.id, element.ativo)" class="fal fa-trash-can cursor-pointer"></i>
+          <div tooltip="Abrir cartão Ponto">
+            <i (click)="abrirCartaoPonto(element.id)" class="fa-regular fa-clock cursor-pointer"></i>
+          </div>
+          <div tooltip="Editar">
+            <i (click)="abrirCadEdit(element)" class="fal fa-pen-to-square cursor-pointer"></i>
+          </div>
+          <div tooltip="Excluir">
+            <i (click)="excluirUsuario(element.id, element.ativo)" class="fal fa-trash-can cursor-pointer"></i>
+          </div>
         </cdk-cell>
       </ng-container>
 

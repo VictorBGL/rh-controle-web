@@ -92,6 +92,19 @@ export class UsuarioService {
     return '';
   }
 
+  public getAcesso(): string {
+    const user = this.getUsuarioToken();
+
+    if (user) {
+      const acesso = user.claims.find(p => p.type == 'acesso')?.value;
+
+      if(acesso != undefined)
+        return acesso;
+    }
+
+    return '';
+  }
+
   public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('url');

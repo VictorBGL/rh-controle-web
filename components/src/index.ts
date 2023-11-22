@@ -7,4 +7,5 @@ export * from './lib/modal/index';
 export * from './lib/modal-confirmacao/index';
 export * from './lib/alert/index';
 export * from './lib/loading/index';
+export * from './lib/tooltip/tooltip.index';
 

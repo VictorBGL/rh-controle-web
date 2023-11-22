@@ -46,3 +46,13 @@ export interface HorarioDiaPontoModel{
     endereco: string;
     horario: string;
 }
+
+export interface FechamentoFolhaPagamento{
+    salarioBruto: number;
+    valorINSS: number;
+    valorIRRF: number;
+    salarioLiquido: number;
+    resumoHoras: string;
+    descontoHoras: number;
+    valorHoraExtra: number;
+}
