@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { environment } from "../../configuration/environment";
 import { HttpResponseToResponsePagination, PaginationResponseModel } from "../pagination";
 import { Observable, map } from "rxjs";
-import { HorarioPontoModel, OkModelGeneric, PontoFilterModel, PontoResponseModel } from "@pim-final/data";
+import { DiaPontoModel, DiaPontoResponseModel, HorarioPontoModel, OkModel, OkModelGeneric, PontoFilterModel, PontoResponseModel } from "@pim-final/data";
 
 @Injectable()
 export class CartaoPontoService {
@@ -36,5 +36,13 @@ export class CartaoPontoService {
 
   public salvarHorarioPonto(model: HorarioPontoModel): Observable<OkModelGeneric>{
     return this.http.post<OkModelGeneric>(`${this.endpointUrl}/horario`, model);
+  }
+
+  public editarHorariosPonto(model: DiaPontoModel): Observable<OkModelGeneric>{
+    return this.http.put<OkModelGeneric>(`${this.endpointUrl}/horario-dia`, model);
+  }
+
+  public getDiaHorario(diaId: string, usuarioId: string): Observable<OkModel<DiaPontoResponseModel>>{
+    return this.http.get<OkModel<DiaPontoResponseModel>>(`${this.endpointUrl}/horarios-dia/${diaId}/usuario/${usuarioId}`);
   }
 }

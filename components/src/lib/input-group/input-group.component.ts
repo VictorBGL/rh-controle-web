@@ -138,6 +138,9 @@ export class InputGroupComponent extends FormControlValueAccessor implements OnI
         else if (this.mask == 'cel'){
           this.recebeMask = MaskEnum.cel;
         }
+        else if (this.mask == 'horario'){
+            this.recebeMask = MaskEnum.horario;
+        }
 
         this.placeholder == undefined ? this.placeholder = '' : null;
     }

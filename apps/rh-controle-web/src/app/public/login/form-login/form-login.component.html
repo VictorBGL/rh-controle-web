@@ -1,2 +1,43 @@
-<span>Entrar</span>
-<button (click)="login()">Entrar</button>
+<div class="fadeIn content-form" (keyup.enter)="login()" [formGroup]="form">
+    <p class="font-titulo text-center mb-4"> Login</p>
+  
+    <div class="mb-4">
+      <rh-web-input-group
+        label="E-MAIL"
+        placeholder="Seu e-mail"
+        icone="fal fa-user"
+        [ngClass]="displayFieldCss(form.email)"
+        formControlName="email"
+      ></rh-web-input-group>
+    </div>
+  
+    <div class="mb-4">
+      <rh-web-input-group
+        label="SENHA"
+        placeholder="Sua senha"
+        icone="fal {{typePassword === 'password' ? 'fa-lock' : 'fa-unlock' }}"
+        (onIconClick)="exibirSenha()" 
+        [type]="typePassword"
+        formControlName="senha"
+        [ngClass]="displayFieldCss(form.senha)"
+      >
+      </rh-web-input-group>
+    </div>
+  
+    <div class="d-flex justify-content-end mb-5">
+      <!-- <span class="esqueci-minha-senha" routerLink="../esqueci-senha">
+        Esqueceu a senha?
+      </span> -->
+    </div>
+  
+    <div class="d-flex justify-content-end mb-5">
+      <rh-controle-web-button class="w-100" texto="ENTRAR" (click)="login()" [larguraMaxima]="true">
+      </rh-controle-web-button>
+    </div>
+  
+    <div class="d-flex justify-content-center align-items-center font-14">
+      <!-- <p>Não possui uma conta?</p> -->
+      <!-- <p class="cursor-pointer cor-terciaria">&nbsp;Criar conta</p> -->
+    </div>
+  </div>
+  

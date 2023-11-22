@@ -1,0 +1,78 @@
+<div class="content-modal fadeIn">
+    <div class="header-modal">
+      <h1 class="title">Editar Ponto: {{data.dia}}</h1>
+      <i class="fa fa-light fa-times-circle" (click)="fechar()"></i>
+    </div>
+    <div class="body-modal" >
+        <ng-container [formGroup]="form">
+            <ng-container *ngFor="let horario of form?.horarios?.controls; let x = index" formArrayName="horarios">
+                <div class="row mb-3" [formGroupName]="x">
+                    <div class="col-3">
+                        <rh-web-input-group
+                            [label]="returnLabel(x)"
+                            placeholder="Informe um Horário"
+                            formControlName="horario"
+                            mask="horario"
+                        ></rh-web-input-group>
+                    </div>
+                    <div class="col-4">
+                        <rh-web-input-group
+                            [disabled]="true"
+                            label="Endereço"
+                            formControlName="endereco"
+                            placeholder="Endereço do local"
+                        ></rh-web-input-group>
+                    </div>
+                    <div class="col-3">
+                        <rh-web-input-group
+                            [disabled]="true"
+                            label="Observação"
+                            formControlName="observacao"
+                            placeholder="Observação"
+                        ></rh-web-input-group>
+                    </div>
+                    <div class="col-2">
+                        <img  (click)="abrirModalImg(horario.get('imagem')!.value)" class="logo" [src]="horario.get('imagem')!.value" alt="">
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+        <div class="footer-modal">
+            <div class="d-flex align-items-center justify-content-between pt-3 w-100">
+              <span class="font-12 font-400 font-italico cor-texto"></span>
+              <div class="footer-btns">
+                <rh-controle-web-button
+                  texto="Cancelar"
+                  icone="fa-light fa-times"
+                  (click)="fechar()">
+                </rh-controle-web-button>
+                <rh-controle-web-button
+                  texto="Salvar"
+                  icone="fa-light fa-check"
+                  (click)="salvar()">
+                </rh-controle-web-button>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div class="modal-wrapper" *ngIf="modalAberta">
+    <div class="modal-background">
+      <i
+        class="fa-solid fa-xmark cursor-pointer modal-close"
+        (click)="fecharModal()"
+      ></i>
+    </div>
+    <ng-container *ngIf="imagemAtual !== ''">
+      <div class="modal-content">
+        <img
+          [src]="imagemAtual"
+          alt=""
+          class="modal-image"
+          #modalImage
+        />
+      </div>
+    </ng-container>
+</div>
+  

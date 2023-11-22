@@ -1,0 +1,28 @@
+@import 'apps/rh-controle-web/src/assets/scss/variables';
+
+.esqueci-minha-senha {
+  font-size: $size-13;
+  color: $cor-secundaria;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+// .content-form {
+//   width: 25rem;
+//   margin: 0 auto;
+// }
+
+
+@media (max-width: $break-desktop) {
+  .content-form {
+    width: 100%;
+  }
+}
+
+.logo {
+  max-width: 10rem;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

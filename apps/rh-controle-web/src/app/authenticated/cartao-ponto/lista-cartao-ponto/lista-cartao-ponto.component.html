@@ -1,6 +1,6 @@
 <div class="card">
     <p class="titulo">
-      Funcionários
+      Cartão Ponto {{nomeUsuario}}
     </p>
   
     <div class="filtro-btn-content">
@@ -10,7 +10,7 @@
       </div>
       <div class="d-flex">
         <!-- <rh-controle-web-button (click)="exportarUsuarios()" texto="Gerar Planilha" icone="fa-sharp fa-regular fa-file-spreadsheet"></rh-controle-web-button> -->
-        <rh-controle-web-button (click)="abrirPonto()" class="ms-3" texto="Inserir Ponto" icone="fad fa-plus-circle"></rh-controle-web-button>
+        <rh-controle-web-button *ngIf="this.usuarioExternoId === undefined" (click)="abrirPonto()" class="ms-3" texto="Inserir Ponto" icone="fad fa-plus-circle"></rh-controle-web-button>
       </div>
     </div>
     <div class="content-table" #tableContent id="tableContent" (scroll)="onScroll($event)">
@@ -39,7 +39,7 @@
         <ng-container cdkColumnDef="acoes">
           <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
           <cdk-cell [ngClass]="styleTable(element.totalHoras, element.feriado)" *cdkCellDef="let element" data-label="Ações"> 
-            <i class="fal fa-trash-can cursor-pointer ms-3 lixeira"></i>
+            <i (click)="abrirPontoDoDia(element.dia, element.diaId)" class="fa-regular fa-bars cursor-pointer ms-3 lixeira"></i>
           </cdk-cell>
         </ng-container>
   

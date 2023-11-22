@@ -6,6 +6,8 @@ import { PontoFilterFormGroup } from "@pim-final/forms";
 import { CartaoPontoService, UsuarioService } from "@pim-final/services";
 import { PontoResponseModel } from "@pim-final/data";
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from "@angular/router";
+import { ModalEditPontoComponent } from "./modal-edit-ponto/modal-edit-ponto.component";
 
 @Component({
     selector: 'rh-controle-web-lista-cartao-ponto',
@@ -21,6 +23,8 @@ export class ListaCartaoPontoComponent extends BaseComponent implements OnInit {
     
     formFiltro: PontoFilterFormGroup = new PontoFilterFormGroup();
     numeroPagina = 2;
+    nomeUsuario = '';
+    usuarioExternoId: string = '';
 
     @ViewChild('tableContent') tableContent!: ElementRef;
 
@@ -40,11 +44,21 @@ export class ListaCartaoPontoComponent extends BaseComponent implements OnInit {
         private alertService: AlertService,
         private modalService: ModalService, 
         private usuarioService: UsuarioService, 
-        private cartaoPontoService: CartaoPontoService
+        private cartaoPontoService: CartaoPontoService,
+        private route: ActivatedRoute
       ){
       super();
+      this.route.params
+      .subscribe((params: any) => {
+        this.usuarioExternoId = params.id;       
+      });
 
-      this.formFiltro.usuarioId.setValue(this.usuarioService.getId());
+      if (this.usuarioExternoId != null) 
+        this.formFiltro.usuarioId.setValue(this.usuarioExternoId );
+      else
+        this.formFiltro.usuarioId.setValue(this.usuarioService.getId());
+
+      this.getUsuario();
     }
 
     ngOnInit(): void {
@@ -56,8 +70,15 @@ export class ListaCartaoPontoComponent extends BaseComponent implements OnInit {
         distinctUntilChanged(),
         debounceTime(300))
         .subscribe(() => this.getHorarios());
+    }
 
-        
+    getUsuario(){
+        this.usuarioService.getUsuario(this.formFiltro.usuarioId.value)
+        .pipe(take(1))
+        .subscribe(data => {
+            if(data.sucesso)
+                this.nomeUsuario = data.resultado.nome;
+        });
     }
 
     getHorarios(){
@@ -98,9 +119,34 @@ export class ListaCartaoPontoComponent extends BaseComponent implements OnInit {
             )
             .subscribe((data: boolean) => {
               if (data) {
+                this.alertService.show({ title: 'Sucesso!', subtitle: 'Cadastro de Ponto Realizado', status: 'sucesso' });
                 this.getHorarios();
               }
             });
+    }
+
+    abrirPontoDoDia(dia: Date, idDia: string){
+        if(this.usuarioExternoId !== undefined){
+            const modal = this.modalService.open(ModalEditPontoComponent, {
+                width: '40rem',
+                clickOutside: false,
+                data: {dia, usuarioId: this.formFiltro.usuarioId.value, idDia}
+              });
+          
+              modal
+                .afterClosed()
+                .pipe(
+                  take(1),
+                  filter((data) => data != false)
+                )
+                .subscribe((data: boolean) => {
+                  if (data) {
+                    this.alertService.show({ title: 'Sucesso!', subtitle: 'Edição de Ponto Realizado', status: 'sucesso' });
+                    this.getHorarios();
+                  }
+                });
+        } else 
+            this.alertService.show({ title: 'Aviso!', subtitle: 'Somente um administrador poderá editar um ponto.', status: 'aviso' });
     }
 
     styleTable(totalHoras: string, feriado: boolean): string{

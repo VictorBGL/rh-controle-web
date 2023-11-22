@@ -6,10 +6,10 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginRouting } from './login.routing';
 import { FormLoginComponent } from './form-login/form-login.component';
-import { AlertService } from '@pim-final/components';
+import { AlertService, ButtonIconModule, InputGroupModule } from '@pim-final/components';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, LoginRouting, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, RouterModule, LoginRouting, ReactiveFormsModule, FormsModule, ButtonIconModule, InputGroupModule],
   exports: [],
   declarations: [LoginComponent, FormLoginComponent],
   providers: [AlertService],

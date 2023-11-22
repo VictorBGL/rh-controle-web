@@ -34,6 +34,10 @@ export class UsuarioService {
         .pipe(map(HttpResponseToResponsePagination));
   }
 
+  public getUsuario(id: string): Observable<OkModel<UsuarioResponseModel>>{
+    return this.http.get<OkModel<UsuarioResponseModel>>(`${this.endpointUrl}/${id}`);
+  }
+
   public exportarUsuario(model: Partial<UsuarioFilterModel> = {}): Observable<OkModel<UsuarioRelatorioResponseModel[]>>{
     return this.http.post<OkModel<UsuarioRelatorioResponseModel[]>>(`${this.endpointUrl}/exportar`, model);
   }

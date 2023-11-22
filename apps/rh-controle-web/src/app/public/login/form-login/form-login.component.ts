@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService, BaseComponent } from '@pim-final/components';
+import { LoginFormGroup } from '@pim-final/forms';
 import { UsuarioService } from '@pim-final/services';
 import { filter, switchMap, take, tap } from 'rxjs';
 
@@ -14,6 +15,8 @@ import { filter, switchMap, take, tap } from 'rxjs';
 export class FormLoginComponent extends BaseComponent {
 
   typePassword = 'password';
+
+  form: LoginFormGroup = new LoginFormGroup();
 
   constructor(
     private router: Router,
@@ -28,10 +31,9 @@ export class FormLoginComponent extends BaseComponent {
   }
 
   login(){
-    let valid = true;
-    // const { value, valid } = this.form;
+    const { value, valid } = this.form;
     if (valid) {
-      this.service.login({email: 'victor.lino@treeinova.com.br', senha: 'Teste@123'})
+      this.service.login(value)
       .pipe(take(1))
       .subscribe({
         next: (data) => {

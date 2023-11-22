@@ -1,0 +1,94 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+
+.content-login {
+  display: flex;
+}
+
+@media (max-width: 1200px) {
+  .content-login {
+    display: block; 
+  }
+}
+
+.content-ilustracao {
+  height: 100vh;
+  flex: 1;
+  position: relative;
+  background-image: url('../../../assets/img/img.login.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 5rem 4rem;
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0.625rem;
+    background: $cor-principal;
+  }
+
+  .titulo-ilustracao {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: $cor-branco;
+  }
+
+  .descricao-ilustracao {
+    font-size: $size-20;
+    color: $cor-branco;
+    font-weight: 300;
+    margin-bottom: 4rem;
+  }
+
+  .ilustracao {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .content-ilustracao {
+    display: none;
+  }
+}
+
+.form {
+  flex: 0 0 35rem;
+  @include centralizar;
+}
+
+@media (max-width: 1200px) {
+  .form {
+    height: 100svh;
+  }
+}
+
+.content {
+  width: 20rem;
+}
+
+.logo {
+  position: absolute;
+  left: 4rem;
+  top: 3rem;
+  max-width: 25rem;
+
+}
+
+
+.titulo {
+  position: absolute;
+  left: 4rem;
+  bottom: 4rem;
+  font-size: 3rem;
+  color: $cor-secundaria;
+  font-weight: 700;
+  text-shadow: 1px 1px $cor-texto;
+}

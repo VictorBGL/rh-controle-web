@@ -49,8 +49,9 @@
       <ng-container cdkColumnDef="acoes">
         <cdk-header-cell *cdkHeaderCellDef></cdk-header-cell>
         <cdk-cell *cdkCellDef="let element" data-label="Ações"> 
+          <i (click)="abrirCartaoPonto(element.id)" class="fa-regular fa-clock cursor-pointer"></i>
           <i (click)="abrirCadEdit(element)" class="fal fa-pen-to-square cursor-pointer"></i>
-          <i (click)="excluirUsuario(element.id, element.ativo)" class="fal fa-trash-can cursor-pointer ms-3"></i>
+          <i (click)="excluirUsuario(element.id, element.ativo)" class="fal fa-trash-can cursor-pointer"></i>
         </cdk-cell>
       </ng-container>
 
