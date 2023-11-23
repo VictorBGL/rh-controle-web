@@ -1,22 +1,56 @@
-<div class="content-modal fadeIn">
+<div class="content-modal fadeIn teste" *ngIf="model != null">
     <div class="header-modal">
       <h1 class="title">{{data.nome}} - ({{nomeMesPassado}})</h1>
       <i class="fa fa-light fa-times-circle" (click)="fechar()"></i>
     </div>
     <div class="body-modal" >
-        
-        <div class="footer-modal">
-            <div class="d-flex align-items-center justify-content-between pt-3 w-100">
-              <span class="font-12 font-400 font-italico cor-texto"></span>
-              <div class="footer-btns">
-                <rh-controle-web-button
-                  texto="Fechar"
-                  icone="fa-light fa-times"
-                  (click)="fechar()">
-                </rh-controle-web-button>
-              </div>
-            </div>
+      <div class="card">
+        <div class="row">
+          <div class="col-4">
+            <span class="titulo"><b>Salário Bruto</b></span>
+            <p class="font-italico">{{model.salarioBruto | currency:'BRL'}}</p>
           </div>
+          <div class="col-4">
+            <span class="titulo"><b>Resumo Horas</b></span>
+            <p class="font-italico">{{model.resumoHoras}}</p>
+          </div>
+          <div class="col-4" *ngIf="valorNegativo">
+            <span class="titulo"><b>Desconto Horas</b></span>
+            <p class="font-italico">{{model.descontoHoras | currency:'BRL'}}</p>
+          </div>
+          <div class="col-4" *ngIf="!valorNegativo">
+            <span class="titulo"><b>Adicional Horas</b></span>
+            <p class="font-italico">{{model.valorHoraExtra | currency:'BRL'}}</p>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-4">
+            <span class="titulo"><b>Salário Líquido</b></span>
+            <p class="font-italico">{{model.salarioLiquido | currency:'BRL'}}</p>
+          </div>
+          <div class="col-4">
+            <span class="titulo"><b>Desconto INSS</b></span>
+            <p class="font-italico">{{model.valorINSS | currency:'BRL'}}</p>
+          </div>
+          <div class="col-4">
+            <span class="titulo"><b>Desconto IRRF</b></span>
+            <p class="font-italico">{{model.valorIRRF| currency:'BRL'}}</p>
+          </div>
+        </div>
+      </div>
+        
+      <div class="footer-modal">
+        <div class="d-flex align-items-center justify-content-between pt-3 w-100">
+          <span class="font-12 font-400 font-italico cor-texto"></span>
+          <div class="footer-btns">
+            <rh-controle-web-button
+              texto="Fechar"
+              icone="fa-light fa-times"
+              (click)="fechar()">
+            </rh-controle-web-button>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
   

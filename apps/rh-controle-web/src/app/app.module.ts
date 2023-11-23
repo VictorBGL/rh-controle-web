@@ -11,10 +11,14 @@ import player from 'lottie-web';
 import { AlertService, LoadingInterceptor, LoadingService } from '@pim-final/components';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxMaskModule } from 'ngx-mask';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 export function playerFactory() {
   return player;
 }
+
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [AppComponent],

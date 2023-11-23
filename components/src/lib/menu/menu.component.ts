@@ -15,13 +15,12 @@ export class MenuComponent {
   emailUsuario: string | null | undefined;
   menuHamburguerAberto = false;
 
-
   constructor(
     private router: Router,
     private usuarioService: UsuarioService
-  ) { }
-
-
+  ) { 
+    this.perfilUsuario = this.usuarioService.getAcesso();
+  }
 
   logout() {
     this.usuarioService.logout();

@@ -81,6 +81,19 @@ export class ListaFuncionariosComponent extends BaseComponent implements OnInit 
         if(data.sucesso){
         const worksheet = XLSX.utils.json_to_sheet(data.resultado);
 
+        const columns = [
+          { wch: 20 },
+          { wch: 15 },
+          { wch: 30 },
+          { wch: 15 },
+          { wch: 15 },
+          { wch: 15 },
+          { wch: 15 },
+          { wch: 15 },
+        ];
+
+        worksheet['!cols'] = columns;
+
         const workbook = {
           Sheets: { funcionarios: worksheet },
           SheetNames: ['funcionarios'],

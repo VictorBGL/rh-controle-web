@@ -1,10 +1,13 @@
 
 <div class="menu">
   <div class="menu-icons">
-    <img class="img mt-4 mb-5" src="assets/img/IMG_8165.PNG" alt="">
+    <div class="mt-4 mb-5">
+      <img class="img" src="assets/img/IMG_8165.PNG" alt="">
+      <span class="texto-logo">CONTROLE-RH</span>
+    </div>
 
 
-    <div class="menu-item" [routerLink]="['funcionarios']"  [ngClass]="{'ativo': ativo('funcionarios')}">
+    <div *ngIf="perfilUsuario == 'admin'" class="menu-item" [routerLink]="['funcionarios']"  [ngClass]="{'ativo': ativo('funcionarios')}">
       <div>
         <i class="fad fa-users pe-4"></i>
         <span class="pe-4">Funcionarios</span>

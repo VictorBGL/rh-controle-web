@@ -39,7 +39,10 @@ export class FormLoginComponent extends BaseComponent {
         next: (data) => {
           if (data.authenticated) {
             this.service.setToken(data);
-            this.router.navigate(['/authenticated/funcionarios']);
+            if(this.service.getAcesso() === 'admin')
+              this.router.navigate(['/authenticated/funcionarios']);
+            else 
+              this.router.navigate(['/authenticated/cartao-ponto']);
           } else {
             this.alertService.show({ title: 'Erro!', subtitle: 'Usuário ou senha inválidos!', status: 'erro' });
           }

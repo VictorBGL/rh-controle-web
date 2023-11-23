@@ -14,6 +14,7 @@ import { take } from "rxjs";
     nomeMesPassado = '';
 
     model!: FechamentoFolhaPagamento;
+    valorNegativo: boolean = false;
 
     constructor(
       @Inject(DIALOG_DATA) public data: {nome: string, id: string},
@@ -24,17 +25,17 @@ import { take } from "rxjs";
     }
 
     ngOnInit(): void {
-        const dataMesPassado = new Date();
-        dataMesPassado.setMonth(dataMesPassado.getMonth() - 1);
-        
-        const nomesMeses = [
-          'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-          'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-        ];
-        
-        this.nomeMesPassado = nomesMeses[dataMesPassado.getMonth()];
+      const dataMesPassado = new Date();
+      dataMesPassado.setMonth(dataMesPassado.getMonth() - 1);
+      
+      const nomesMeses = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ];
+      
+      this.nomeMesPassado = nomesMeses[dataMesPassado.getMonth()];
 
-        this.getDados();
+      this.getDados();
     }
 
     fechar(){
@@ -46,8 +47,11 @@ import { take } from "rxjs";
         .pipe(take(1))
         .subscribe(data => {
             if(data.sucesso){
-                this.model = data.resultado;
-                this.model.resumoHoras = this.model.resumoHoras.replace(/\.\d{1,7}/, '');
+              this.model = data.resultado;
+              this.model.resumoHoras = this.model.resumoHoras.replace(/\.\d{1,7}/, '');
+
+              if(this.model.resumoHoras.includes("-"))
+                this.valorNegativo = true;
             }
         });
     }
