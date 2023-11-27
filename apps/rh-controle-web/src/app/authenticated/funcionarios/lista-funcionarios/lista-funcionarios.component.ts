@@ -20,7 +20,7 @@ const EXCEL_TYPE =
 export class ListaFuncionariosComponent extends BaseComponent implements OnInit {
 
   dataSource: UsuarioResponseModel[] = [];
-  displayedColumns = ['nome', 'email', 'status', 'acoes'];
+  displayedColumns = ['nome', 'telefone', 'email', 'acesso', 'status', 'acoes'];
   numeroPagina = 2;
   formFiltro: UsuarioFilterFormGroup = new UsuarioFilterFormGroup();
   statusItems = [{nome: 'Ativo', value: true}, {nome: 'Inativo', value: false}];

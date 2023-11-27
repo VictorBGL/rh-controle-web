@@ -31,15 +31,26 @@
         <cdk-cell *cdkCellDef="let element" data-label="Nome"> {{element.nome}} </cdk-cell>
       </ng-container>
 
+      <ng-container cdkColumnDef="telefone">
+        <cdk-header-cell *cdkHeaderCellDef> Telefone </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element" data-label="Telefone"> {{element.telefone}} </cdk-cell>
+      </ng-container>
+
       <ng-container cdkColumnDef="email">
         <cdk-header-cell *cdkHeaderCellDef> Email </cdk-header-cell>
         <cdk-cell *cdkCellDef="let element" data-label="Email"> {{element.email}} </cdk-cell>
+      </ng-container>
+
+      <ng-container cdkColumnDef="acesso">
+        <cdk-header-cell *cdkHeaderCellDef> Acesso </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let element" data-label="Acesso"> {{element.acesso}} </cdk-cell>
       </ng-container>
 
       <ng-container cdkColumnDef="status">
         <cdk-header-cell *cdkHeaderCellDef> Status </cdk-header-cell>
         <cdk-cell *cdkCellDef="let element" data-label="Status"> 
           <div
+            [tooltip]="element.ativo ? 'Ativo' : 'Inativo'"
             class="status"
             [ngClass]="element.ativo ? 'ativo-status' : 'inativo-status'"
           ></div>  
