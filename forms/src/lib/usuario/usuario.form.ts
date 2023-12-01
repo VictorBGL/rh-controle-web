@@ -55,7 +55,7 @@ export class UsuarioFormGroup extends BaseFormGroup {
       dependentes: fb.control(0),
       pensao: fb.control(0),
       acesso: fb.control(null, [Validators.required]),
-      ativo: fb.control(false, [Validators.required]),
+      ativo: fb.control(true, [Validators.required]),
       senha: fb.control(''),
       senhaConfirmacao: fb.control(''),
     });
